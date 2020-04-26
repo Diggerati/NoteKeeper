@@ -1,5 +1,4 @@
 package com.example.notekeeper;
-
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,13 +24,14 @@ public class NoteActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Spinner spinnerCourses = findViewById(R.id.spinner_course);
-        List<CourseInfo> courses = DataManager.getInstance().getCourses();
+        Spinner spinnerCourses = findViewById(R.id.spinner_courses);
 
-        ArrayAdapter<CourseInfo> adapterCourses =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
-        adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCourses.setAdapter(adapterCourses);
+       List<CourseInfo> courses = DataManager.getInstance().getCourses();
+
+       ArrayAdapter<CourseInfo> adapterCourses =
+               new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, courses);
+       adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item );
+       spinnerCourses.setAdapter(adapterCourses);
     }
 
     @Override
